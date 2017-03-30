@@ -28,6 +28,34 @@ export GOROOT=$HOME/go
 
 ```
 
+## Basic Settings for p2.large instance
+
+```
+ssh -i wfdoran.pem ec2-user@xxx.xxx.xxx.xxx
+
+sudo yum install gcc
+sudo yum install gcc-c++
+sudo yum install perl
+sudo yum install wget
+
+wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run
+
+sudo sh cuda_8.0.61_375.26_linux-run
+  EULA: accept
+  Driver: no
+  CUDA 8.0 Toolkit: yes
+  Location: default
+  sym link: yes
+  samples: yes
+  Location: default
+  
+PATH=/usr/local/cuda-8.0/bin:$PATH
+LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH
+  
+```
+
+
+
 ## Billing
 
 [Billing Page](https://console.aws.amazon.com/billing/home?#/)
