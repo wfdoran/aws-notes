@@ -28,7 +28,7 @@ export GOROOT=$HOME/go
 
 ```
 
-## Basic Settings for p2.large instance
+## Basic Settings for p2.xlarge instance
 
 ```
 ssh -i wfdoran.pem ec2-user@xxx.xxx.xxx.xxx
@@ -51,7 +51,15 @@ sudo sh cuda_8.0.61_375.26_linux-run
   
 PATH=/usr/local/cuda-8.0/bin:$PATH
 LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH
-  
+
+wget https://raw.githubusercontent.com/wfdoran/aws-notes/master/examples/hello_cuda.cu
+
+nvcc hello_cuda.cu -o hello_cuda
+
+./hello_cuda
+
+cd NVIDIA_CUDA-8.0_Samples
+make  
 ```
 
 
