@@ -24,7 +24,7 @@ int main() {
   printf("gpu count = %d\n", count);
 
   int runtimeVersion;
-  CUDA_WRAP( cudaruntimeGetVersion(&runtimeVersion));
+  CUDA_WRAP( cudaRuntimeGetVersion(&runtimeVersion));
   printf("runtime version = %d\n", runtimeVersion);
 
   int driverVersion;
@@ -35,10 +35,10 @@ int main() {
   for (int device = 0; device < count; device++) {
     cudaDeviceProp prop;
     CUDA_WRAP( cudaGetDeviceProperties(&prop, device));
-    printf("device = %d:\n", devicde);
+    printf("device = %d:\n", device);
     printf("  name = %s\n", prop.name);
-    printf("  totalGlobalMemory = %zd\n", prop.totalGlobalMemory);
-    printf("  compute capability = %d.%d\n", prop.major, prob.minor);
+    printf("  totalGlobalMem = %zd\n", prop.totalGlobalMem);
+    printf("  compute capability = %d.%d\n", prop.major, prop.minor);
     printf("  clockRate = %d\n", prop.clockRate);
     printf("  multiProcessorCount = %d\n", prop.multiProcessorCount);
     printf("\n");
