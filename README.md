@@ -37,29 +37,33 @@ sudo yum install gcc
 sudo yum install gcc-c++
 sudo yum install perl
 sudo yum install wget
+sudo yum install kernel-devel-$(uname -r) kernel-headers-$(uname -r)
 
 wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run
+chmod +x cuda_8.0.61_375.26_linux-run
 
-sudo sh cuda_8.0.61_375.26_linux-run
+sudo ./cuda_8.0.61_375.26_linux-run
   EULA: accept
-  Driver: no
+  Driver: yes
+  OpenGL: yes
+  nvidia-xconfig: no
   CUDA 8.0 Toolkit: yes
   Location: default
   sym link: yes
   samples: yes
   Location: default
   
-PATH=/usr/local/cuda-8.0/bin:$PATH
-LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH
+export PATH=/usr/local/cuda-8.0/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH
 
 wget https://raw.githubusercontent.com/wfdoran/aws-notes/master/examples/hello_cuda.cu
-
 nvcc hello_cuda.cu -o hello_cuda
-
 ./hello_cuda
 
 cd NVIDIA_CUDA-8.0_Samples
-make  
+make
+cd 0_Simple/vectorAdd
+./vectorAdd
 ```
 
 
